@@ -30,20 +30,16 @@ export default (state = initialState, action) => {
 }
 
 export const addPost = (title, price) => {
-  return (dispatch) => {
-      return dispatch({
-        type: ADD,
-        title,
-        price,
-      })
+  return {
+    type: ADD,
+    title,
+    price,
   }
 }
 
 export const deletePost = (id) => {
-  return (dispatch) => {
-    return dispatch({
-      type: DELETE,
-      id,
-    })
+  return {
+    type: DELETE,
+    id,
   }
 }
