@@ -1,5 +1,6 @@
 const ADD = 'ADD';
 const DELETE = 'DELETE';
+const FILTER = 'FILTER';
 
 const initialState = {
   posts: [],
@@ -25,6 +26,13 @@ export default (state = initialState, action) => {
       }
     }
 
+    case FILTER : {
+      return {
+        ...state,
+        posts: [...state.posts].filter((post) => post.title.toLowerCase().includes(action.payload.toLowerCase()))
+      };
+    }
+
     default: return state;
   }
 }
@@ -41,5 +49,13 @@ export const deletePost = (id) => {
   return {
     type: DELETE,
     id,
+  }
+}
+
+export const filterPost = (title, payload) => {
+  return {
+    type: FILTER,
+    title,
+    payload
   }
 }
